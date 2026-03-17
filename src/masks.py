@@ -13,8 +13,8 @@ def get_mask_account(number_account: str) -> str:
     masked_numbers = f"**{save_numbers[-4:]}"
     return masked_numbers
 
-card_number = str(input())
-account_number = str(input())
-
-print(get_mask_card_number(card_number))
-print(get_mask_account(account_number))
+# card_number = str(input())
+# account_number = str(input())
+#
+# print(get_mask_card_number(card_number))
+# print(get_mask_account(account_number))
