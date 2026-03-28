@@ -1,9 +1,9 @@
 from masks import get_mask_account, get_mask_card_number
 
 
-def mask_account_card(arg: str) -> str:
+def mask_account_card(account_card: str) -> str:
     """Функция, которая обрабатывает информацию о картах и о счетах"""
-    parts = arg.split()
+    parts = account_card.split()
     number = parts[-1]
     type_info = " ".join(parts[:-1])
     if "счет" in type_info.lower():
@@ -13,11 +13,11 @@ def mask_account_card(arg: str) -> str:
     return f"{type_info} {masked_number}"
 
 
-def get_date(date: str) -> str:
+def get_date(date_string: str) -> str:
     """Функция, которая выводит дату в другом формате"""
-    year = date[0:4]
-    month = date[5:7]
-    day = date[8:10]
+    year = date_string[0:4]
+    month = date_string[5:7]
+    day = date_string[8:10]
     return f"{day}.{month}.{year}"
 
 
