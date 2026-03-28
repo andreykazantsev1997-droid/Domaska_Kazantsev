@@ -1,4 +1,7 @@
-def filter_by_skate(list_dict: list, key: str = "EXECUTED") -> list:
+from typing import Any
+
+
+def filter_by_state(list_dict: list[dict[str, Any]], key: str = "EXECUTED") -> list[dict[str, Any]]:
     """Функция, которая возвращает список словарей, у которых ключ соответствует значению"""
     new_list_dict = []
     for item in list_dict:
@@ -7,7 +10,7 @@ def filter_by_skate(list_dict: list, key: str = "EXECUTED") -> list:
     return new_list_dict
 
 
-def sort_by_date(list_dict: list, sort_list: bool = True) -> list:
+def sort_by_date(list_dict: list[dict[str, Any]], sort_list: bool = True) -> list[dict[str, Any]]:
     """Функция, которая сортирует списки словарей по дате"""
     sorted_list = sorted(list_dict, key=lambda x: x.get("date", ""), reverse=sort_list)
     return sorted_list
@@ -20,6 +23,6 @@ test = [
     {"id": 615064591, "state": "CANCELED", "date": "2018-10-14T08:21:33.419441"},
 ]
 
-result = filter_by_skate(test)
+result = filter_by_state(test)
 
 print(sort_by_date(result))
