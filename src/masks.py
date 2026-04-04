@@ -1,8 +1,6 @@
-from typing import Union
-
 def get_mask_card_number(number_card: str) -> str:
     """Функция, которая маскирует цифры, кроме первых 6 цифр и последние 4 цифры банковской карты"""
-    card = number_card.replace(" ","")
+    card = number_card.replace(" ", "")
     if number_card == "":
         raise ValueError("Номер карты не введен")
     unmasked_numbers = card[:6]

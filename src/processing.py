@@ -1,4 +1,4 @@
-from typing import Any, Union
+from typing import Any
 
 
 def filter_by_state(list_dict: list[dict[str, Any]], key: str = "EXECUTED") -> list[dict[str, Any]]:
@@ -14,7 +14,6 @@ def sort_by_date(list_dict: list[dict[str, Any]], reverse: bool = True) -> list[
     """Функция, которая сортирует списки словарей по дате"""
     sorted_by_data = sorted(list_dict, key=lambda x: x.get("date", ""), reverse=reverse)
     return sorted_by_data
-
 
 
 # ]
