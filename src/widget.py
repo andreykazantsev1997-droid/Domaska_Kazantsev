@@ -25,9 +25,17 @@ def mask_account_card(account_card: str) -> str:
 
 def get_date(date_string: str) -> str:
     """Функция, которая выводит дату в другом формате"""
+    if not isinstance(date_string, str):
+        raise TypeError("Входные данные должны быть строкой")
+    if len(date_string) < 10:
+        raise ValueError("Некорректный формат даты")
+    if date_string[4] != "-" or date_string[7] != "-":
+        raise ValueError("Некорректный формат даты")
     year = date_string[0:4]
     month = date_string[5:7]
     day = date_string[8:10]
+    if not (year.isdigit() and month.isdigit() and day.isdigit()):
+        raise ValueError("Некорректный формат даты")
     return f"{day}.{month}.{year}"
 
 

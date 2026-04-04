@@ -1,9 +1,9 @@
 from unittest import expectedFailure
 import pytest
 
-from src.widget import mask_account_card
+from src.widget import mask_account_card, get_date
 
-def test_mask_account_card_card():
+def test_mask_account_card():
     assert mask_account_card("Visa Platinum 7000792289606361") == "Visa Platinum 7000 79** **** 6361"
 
 def test_mask_account_card_account():
@@ -26,3 +26,15 @@ def test_mask_account_card_invalid():
 def test_mask_account_card_invalid_data(invalid_input):
     with pytest.raises((ValueError, TypeError, IndexError)):
          mask_account_card(invalid_input)
+
+@pytest.mark.parametrize("date_string, expected", [
+    ("2024-03-11T02:26:18.671407", "11.03.2024"),
+    ("2023-12-31T23:59:59.999999", "31.12.2023"),
+    ("2024-01-01T00:00:00.000000", "01.01.2024"),
+    ("2024-02-29T10:00:00.000000", "29.02.2024"),])
+def test_get_date_valid(date_string, expected):
+    assert get_date(date_string) == expected
+
+def test_get_date_invalid_format():
+    with pytest.raises(ValueError):
+        get_date("11-03-2024")
