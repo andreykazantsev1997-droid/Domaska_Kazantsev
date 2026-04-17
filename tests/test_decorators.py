@@ -1,12 +1,16 @@
 import os
+
 import pytest
+
 from src.decorators import log
+
 
 # 1. Тест вывода в консоль
 def test_log_to_console(capsys):
     @log()
     def add(x, y):
         return x + y
+
     add(1, 2)
     captured = capsys.readouterr()
     assert "add. Result: 3" in captured.out
@@ -16,6 +20,7 @@ def test_log_to_file():
     test_file = "test_log.txt"
     if os.path.exists(test_file):
         os.remove(test_file)
+
     @log(filename=test_file)
     def multiply(x, y):
         return x * y
