@@ -9,13 +9,13 @@ def log(filename=None):
         def wrapper(*args, **kwargs):
             try:
                 result = func(*args, **kwargs)
-                log_message = f"{func.__name__}. Result: {result}"
+                log_message = f"{func.__name__}. Result: {result}\n"
             except Exception as e:
                 inputs = f"inputs: {args},{kwargs}"
                 log_message = f"Ошибка в функции {func.__name__}: {type(e).__name__}. Сообщение: {inputs}"
                 result = None
             if filename:
-                with open(filename, "a") as f:
+                with open(filename, "a", encoding="utf-8") as f:
                     f.write(log_message)
             else:
                 print(log_message.strip())

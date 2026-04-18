@@ -5,7 +5,6 @@ import pytest
 from src.decorators import log
 
 
-# 1. Тест вывода в консоль
 def test_log_to_console(capsys):
     @log()
     def add(x, y):
@@ -31,7 +30,7 @@ def test_log_to_file():
         content = f.read()
 
     assert "multiply. Result: 10" in content
-    os.remove(test_file)  # Чистим за собой
+    os.remove(test_file)
 
 
 def test_log_error(capsys):
