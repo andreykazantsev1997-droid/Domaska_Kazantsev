@@ -1,0 +1,2 @@
+my_function. Result: 3
+my_function. Result: 3
