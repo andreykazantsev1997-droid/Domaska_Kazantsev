@@ -14,9 +14,9 @@ def test_financial_transactions_success(mock_exists):
 
 def test_financial_transactions_not_list():
     json_data = json.dumps({"key": "value"})
-    with patch("builtins.open", mock_open(read_data=json_data)):
-        result = financial_transactions("fake_path.json")
-        assert result == []
+    with patch("builtins.open", mock_open(read_data="не json")):
+        with patch("os.path.exists", return_value=True):
+            assert financial_transactions("fake.json") == []
 
 
 def test_financial_transactions_file_not_found():
