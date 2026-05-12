@@ -2,6 +2,7 @@ import json
 from unittest.mock import patch, mock_open
 from src.utils import financial_transactions
 
+
 @patch("os.path.exists")  # Добавляем этот патч
 def test_financial_transactions_success(mock_exists):
     mock_exists.return_value = True
@@ -13,7 +14,6 @@ def test_financial_transactions_success(mock_exists):
 
 
 def test_financial_transactions_not_list():
-    json_data = json.dumps({"key": "value"})
     with patch("builtins.open", mock_open(read_data="не json")):
         with patch("os.path.exists", return_value=True):
             assert financial_transactions("fake.json") == []

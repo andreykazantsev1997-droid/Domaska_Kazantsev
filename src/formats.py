@@ -9,13 +9,13 @@ def get_transactions_from_csv(file_path):
     if not os.path.exists(file_path):
         return []
     with open(file_path, "r", encoding="utf-8") as file:
-        reader = csv.DictReader(file)
+        reader = csv.DictReader(file, delimiter=";")
         for row in reader:
             transactions.append(dict(row))
     return transactions
 
 
-# print(get_transactions_from_csv("transactions.csv"))
+# print(get_transactions_from_csv("../data/transactions.csv"))
 
 
 def get_transactions_from_excel(file_path):
@@ -27,4 +27,4 @@ def get_transactions_from_excel(file_path):
     return transactions
 
 
-# print(get_transactions_from_excel("transactions_excel.xlsx"))
+# print(get_transactions_from_excel("../data/transactions_excel.xlsx"))
