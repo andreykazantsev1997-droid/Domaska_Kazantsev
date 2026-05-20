@@ -4,7 +4,9 @@ import os
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.DEBUG)
-file_handler = logging.FileHandler("../logs/utils.log", "w", encoding="utf-8")
+current_dir = os.path.dirname(os.path.abspath(__file__))
+log_path = os.path.join(current_dir, "..", "logs", "utils.log")
+file_handler = logging.FileHandler(log_path, "w", encoding="utf-8")
 formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 file_handler.setFormatter(formatter)
 logger.addHandler(file_handler)
