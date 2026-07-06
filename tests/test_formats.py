@@ -1,8 +1,6 @@
-from unittest.mock import patch, MagicMock, mock_open
+from unittest.mock import MagicMock, mock_open, patch
 
-
-from src.formats import get_transactions_from_csv
-from src.formats import get_transactions_from_excel
+from src.formats import get_transactions_from_csv, get_transactions_from_excel
 
 
 def test_get_transactions_from_csv_not_found():
